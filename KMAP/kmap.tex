@@ -1,0 +1,132 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\title{
+\vspace{1cm}
+{ K - Map Assignment} }
+\author{Madhu Reddy}
+ \begin{document}
+\maketitle
+ \section {ABSTRACT}
+ This paper explains a Karnaugh maps (K-map) by finding the logic functions for the incrementing decoder from $0$ to $9$ and don't care condition using arduino uno.
+
+\section{COMPONENTS}
+The required components list is given in Table: I., seven segment display is shown in Fig.1, and 7447 IC pin diagram is shown in Fig-2.
+\vspace{0.3cm}
+ \begin{table} [htbp]
+\centering
+\begin{tabular}{| c | c | c |} \hline
+Components & Value & Quantity \\\hline
+IC & 7447 & 1 \\ \hline
+seven segment display & & 1\\ \hline
+Arduino & UNO & 1 \\ \hline
+Jumper Wires &  & 50 \\ \hline
+Breadboard & & 1 \\ 
+\hline
+\end{tabular}
+\vspace{0.3cm}
+\caption{\label{tab:widgets}}
+\end{table}
+
+\begin{figure}[h!]                           
+\centering                                 
+\includegraphics[width=0.2\textwidth]{ /storage/emulated/0/Documents/seven.png}                                           
+\caption{\label{fig-1:Gates}}               
+\end{figure}
+
+\begin{figure}[h!]                           
+\centering                                 
+\includegraphics[width=0.5\textwidth]{  /storage/emulated/0/Documents/7447pin.png }                                           
+\caption{\label{fig-2:Gates}}               
+\end{figure}
+
+\section{PROCEDURE}
+
+
+\begin{enumerate}
+
+\item Make the connections of arduino, and  7447 ICs according to Fig-4.
+	\begin{figure}[h] 
+	\centering 
+	\includegraphics[width=0.5\textwidth]{/storage/emulated/0/Documents/74743.png }
+	\caption{\label{fig-4:Gates}}    
+\end{figure}
+
+
+\item {Truth Table for k-map without don't care and incrementing from $0$ to $9$ :  }
+
+\begin{table}[htbp]
+    \centering
+\begin{tabular}
+{ | c | c | c | c | c | c | c | c | } \hline
+$Z$ & $Y$ & $X$ & $W$ & $D$ & $C$ & $B$ & $A$\\\hline
+0   & 0   & 0   & 0   & 0  & 0 & 0  & 1 \\
+0   & 0   & 0   & 1   & 0  & 0 & 1  & 0 \\
+0   & 0   & 1   & 0   & 0  & 0 & 1  & 1 \\
+0   & 0   & 1   & 1   & 0  & 1 & 0  & 0 \\
+0   & 1   & 0   & 0   & 0  & 1 & 0  & 1 \\  
+0   & 1   & 0   & 1   & 0  & 1 & 1  & 0 \\
+0   & 1   & 1   & 0   & 0  & 1 & 1  & 1 \\  
+0   & 1   & 1   & 1   & 1  & 0 & 0  & 0 \\
+1   & 0   & 0   & 0   & 1  & 0 & 0  & 1 \\
+1   & 0   & 0   & 1   & 0  & 0 & 0  & 0 \\ \hline
+\end{tabular}
+\vspace{0.1cm}
+\caption{\label{tab:widgets}}
+\end{table}
+
+\item {Truth Table for k-map with don't care condition : }
+
+\begin{table}[htbp]
+    \centering
+\begin{tabular}
+{ | c | c | c | c | c | c | c | c | } \hline
+$Z$ & $Y$ & $X$ & $W$ & $D$ & $C$ & $B$ & $A$\\\hline
+0   & 0   & 0   & 0   & 1  & 0 & 0  & 1 \\
+0   & 0   & 0   & 1   & 0  & 0 & 0  & 0 \\
+0   & 0   & 1   & 0   & 0  & 0 & 0  & 1 \\
+0   & 0   & 1   & 1   & 0  & 0 & 1  & 0 \\
+0   & 1   & 0   & 0   & 0  & 0 & 1  & 1 \\  
+0   & 1   & 0   & 1   & 0  & 1 & 0  & 0 \\
+0   & 1   & 1   & 0   & 0  & 1 & 0  & 1 \\  
+0   & 1   & 1   & 1   & 0  & 1 & 1  & 0 \\
+1   & 0   & 0   & 0   & 0  & 1 & 1  & 1 \\
+1   & 0   & 0   & 1   & 1  & 0 & 0  & 0 \\
+1   & 0   & 1   & 0   & -  & - & -  & - \\ 
+1   & 0   & 1   & 1   & -  & - & -  & - \\
+1   & 1   & 0   & 0   & -  & - & -  & - \\
+1   & 1   & 0   & 1   & -  & - & -  & - \\
+1   & 1   & 1   & 0   & -  & - & -  & - \\
+1   & 1   & 1   & 1   & -  & - & -  & - \\ \hline
+\end{tabular}
+\vspace{0.1cm}
+\caption{\label{tab:widgets}}
+\end{table}
+	
+\item Execute the arduino code without any errors.
+\item After upload the code into hardware setup using arduino IDE platform with hex file.
+ \end{enumerate}
+
+\section{RESULTS}
+ \begin{enumerate}
+	 \item Download the code given in the link below and execute them to see the output as shown in Fig.6,7. 
+	 \item https://github.com/madhureddy727/FWC-Assignments
+ \end{enumerate}
+
+
+\begin{figure}[h!]                           
+\centering                                 
+\includegraphics[width=0.5\textwidth]{  /storage/emulated/0/Pictures/Screenshots/Screenshot_20241023-102453.png   }                                           
+\caption{\label{fig-5:Gates}}               
+\end{figure}
+
+\section{CONCLUSION}
+ Hence implementation of K-Map using 7447 IC and Seven segment dispaly using arduino UNO is done.
+\end{document}
